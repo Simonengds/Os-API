@@ -57,6 +57,9 @@ public class OS {
 		this.cliente = cliente;
 	}
 
+	public OS(Object object, Prioridade alta, String string, Status andamento, Tecnico t1, Tecnico t2, Cliente c1) {
+	}
+
 	public Integer getId() {
 		return id;
 	}

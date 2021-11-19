@@ -36,7 +36,7 @@ public class ClienteService {
 	}
 
 	public Cliente create(ClienteDTO objDTO) {
-		if (findByCPF(objDTO) != null) {
+		if (findByCpf(objDTO) != null) {
 			throw new DataIntegratyViolationException("CPF já cadastrado na base de dados");
 
 		}
@@ -46,7 +46,7 @@ public class ClienteService {
 	public Cliente update(Integer id, @Valid ClienteDTO objDTO) {
 		Cliente oldObj = findById(id);
 
-		if (findByCPF(objDTO) != null && findByCPF(objDTO).getId() != id) {
+		if (findByCpf(objDTO) != null && findByCpf(objDTO).getId() != id) {
 			throw new DataIntegratyViolationException("CPF já cadastrado na base de dados");
 
 		}
@@ -69,8 +69,8 @@ public class ClienteService {
 		
 	}
 
-	private Pessoa findByCPF(ClienteDTO objDTO) {
-		Pessoa obj = pessoaRepository.findByCPF(objDTO.getCpf());
+	private Pessoa findByCpf(ClienteDTO objDTO) {
+		Pessoa obj = pessoaRepository.findByCpf(objDTO.getCpf());
 		if (obj != null) {
 			return obj;
 		}

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa implements Serializable {
@@ -20,7 +22,7 @@ public abstract class Pessoa implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	
+	@CPF
 	private String cpf;
 	private String telefone;
 
