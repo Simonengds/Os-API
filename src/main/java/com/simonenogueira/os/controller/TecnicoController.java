@@ -25,7 +25,7 @@ import com.simonenogueira.os.services.TecnicoService;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "/tecnico")
+@RequestMapping(value = "/tecnicos")
 public class TecnicoController {
 
 	@Autowired

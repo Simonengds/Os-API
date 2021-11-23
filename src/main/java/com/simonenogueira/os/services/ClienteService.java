@@ -40,7 +40,9 @@ public class ClienteService {
 			throw new DataIntegratyViolationException("CPF já cadastrado na base de dados");
 
 		}
-		return repository.save(new Cliente(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getTelefone()));
+		Cliente newObj =  new Cliente(null, objDTO.getNome(), objDTO.getCpf(), objDTO.getTelefone());
+		return repository.save(newObj);
+				
 	}
 
 	public Cliente update(Integer id, @Valid ClienteDTO objDTO) {

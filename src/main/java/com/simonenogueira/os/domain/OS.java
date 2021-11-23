@@ -20,20 +20,20 @@ public class OS {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy  HH:mm")
 	private LocalDateTime dateAbertura;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy  HH:mm")
 	private LocalDateTime dateFechamento;
 	private Integer prioridade;
-	private String observacoes;
 	private Integer status;
-	
+	private String observacoes;
+
 	@ManyToOne
 	@JoinColumn(name = "tecnico_id")
 	private Tecnico tecnico;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
@@ -55,9 +55,6 @@ public class OS {
 		this.status = (status == null) ? 0 : status.getCod();
 		this.tecnico = tecnico;
 		this.cliente = cliente;
-	}
-
-	public OS(Object object, Prioridade alta, String string, Status andamento, Tecnico t1, Tecnico t2, Cliente c1) {
 	}
 
 	public Integer getId() {
@@ -138,10 +135,10 @@ public class OS {
 		if (getClass() != obj.getClass())
 			return false;
 		OS other = (OS) obj;
-		if (id ==null) {
-			if(other.id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if(!id.equals( other.id))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

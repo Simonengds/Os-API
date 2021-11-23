@@ -7,6 +7,8 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.simonenogueira.os.domain.OS;
+import com.simonenogueira.os.domain.enuns.Prioridade;
+import com.simonenogueira.os.domain.enuns.Status;
 
 public class OSDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -14,11 +16,11 @@ public class OSDTO implements Serializable {
 	private Integer id;
 	@JsonFormat(pattern = "dd/MM/yyyy  HH:mm")
 
-	private LocalDateTime dateAbertura;
+	private LocalDateTime dataAbertura;
 
 	@JsonFormat(pattern = "dd/MM/yyyy  HH:mm")
 
-	private LocalDateTime dateFechamento;
+	private LocalDateTime dataFechamento;
 	private Integer prioridade;
 
 	@NotEmpty(message = "O campo OBERSERVAÇÕES é requerido")
@@ -26,6 +28,8 @@ public class OSDTO implements Serializable {
 	private Integer status;
 	private Integer tecnico;
 	private Integer cliente;
+
+	
 
 	public OSDTO() {
 		super();
@@ -35,8 +39,8 @@ public class OSDTO implements Serializable {
 	public OSDTO(OS obj) {
 		super();
 		this.id = obj.getId();
-		this.dateAbertura = obj.getDateAbertura();
-		this.dateFechamento = obj.getDateFechamento();
+		this.dataAbertura = obj.getDateAbertura();
+		this.dataFechamento = obj.getDateFechamento();
 		this.prioridade = obj.getPrioridade().getCod();
 		this.observacoes = obj.getObservacoes();
 		this.status = obj.getStatus().getCod();
@@ -52,24 +56,24 @@ public class OSDTO implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDateTime getDateAbertura() {
-		return dateAbertura;
+	public LocalDateTime getDataAbertura() {
+		return dataAbertura;
 	}
 
-	public void setDateAbertura(LocalDateTime dateAbertura) {
-		this.dateAbertura = dateAbertura;
+	public void setDateAbertura(LocalDateTime dataAbertura) {
+		this.dataAbertura = dataAbertura;
 	}
 
-	public LocalDateTime getDateFechamento() {
-		return dateFechamento;
+	public LocalDateTime getDataFechamento() {
+		return dataFechamento;
 	}
 
-	public void setDateFechamento(LocalDateTime dateFechamento) {
-		this.dateFechamento = dateFechamento;
+	public void setDateFechamento(LocalDateTime dataFechamento) {
+		this.dataFechamento = dataFechamento;
 	}
 
-	public Integer getPrioridade() {
-		return prioridade;
+	public Prioridade getPrioridade() {
+		return Prioridade.toEnum(this.prioridade);
 	}
 
 	public void setPrioridade(Integer prioridade) {
@@ -84,8 +88,8 @@ public class OSDTO implements Serializable {
 		this.observacoes = observacoes;
 	}
 
-	public Integer getStatus() {
-		return status;
+	public Status getStatus() {
+		return Status.toEnum(this.status);
 	}
 
 	public void setStatus(Integer status) {
