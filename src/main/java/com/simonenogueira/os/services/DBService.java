@@ -3,7 +3,9 @@ package com.simonenogueira.os.services;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.simonenogueira.os.domain.Cliente;
 import com.simonenogueira.os.domain.OS;
@@ -14,7 +16,7 @@ import com.simonenogueira.os.repository.ClienteRepository;
 import com.simonenogueira.os.repository.OSRepository;
 import com.simonenogueira.os.repository.TecnicoRepository;
 
-@Service
+@Configuration
 public class DBService {
 
 	@Autowired
@@ -23,6 +25,12 @@ public class DBService {
 	private ClienteRepository clienteRepository;
 	@Autowired
 	private OSRepository osRepository;
+	@Bean
+    CommandLineRunner initDataBase(){
+        return args -> { instanciaDB();
+        };
+    }
+	
 
 	public void instanciaDB() {
 
@@ -59,9 +67,9 @@ public class DBService {
 		c5.getList().add(os5);
 		c1.getList().add(os6);
 
-		tecnicoRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5));
-		clienteRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
-		osRepository.saveAll(Arrays.asList(os1, os2, os3, os4, os5, os6));
+		//tecnicoRepository.saveAll(Arrays.asList(t1, t2, t3, t4, t5));
+		//clienteRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
+		//osRepository.saveAll(Arrays.asList(os1, os2, os3, os4, os5, os6));
 	}
 
 }
